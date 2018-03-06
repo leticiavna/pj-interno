@@ -23,7 +23,7 @@ default: &default
 
 development:
   <<: *default
-  database: tinder_in_development
+  database: tinder_in
 
   # The specified database role being used to connect to postgres.
   # To create additional roles in postgres see `$ createuser --help`.
@@ -80,6 +80,5 @@ test:
 #
 production:
   <<: *default
-  database: tinder_in_production
-  username: tinder_in
+  database: tinder_in
   password: <%= ENV['TINDER_IN_DATABASE_PASSWORD'] %>

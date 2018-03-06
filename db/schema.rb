@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180306153731) do
+ActiveRecord::Schema.define(version: 20180306154501) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -19,6 +19,14 @@ ActiveRecord::Schema.define(version: 20180306153731) do
     t.string "title"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "ejs", force: :cascade do |t|
+    t.string "title"
+    t.bigint "university_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["university_id"], name: "index_ejs_on_university_id"
   end
 
   create_table "students", force: :cascade do |t|
@@ -31,6 +39,10 @@ ActiveRecord::Schema.define(version: 20180306153731) do
     t.string "orientation"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "career_id"
+    t.bigint "university_id"
+    t.index ["career_id"], name: "index_students_on_career_id"
+    t.index ["university_id"], name: "index_students_on_university_id"
   end
 
   create_table "universities", force: :cascade do |t|
@@ -40,4 +52,7 @@ ActiveRecord::Schema.define(version: 20180306153731) do
     t.datetime "updated_at", null: false
   end
 
+  add_foreign_key "ejs", "universities"
+  add_foreign_key "students", "careers"
+  add_foreign_key "students", "universities"
 end

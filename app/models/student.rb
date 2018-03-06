@@ -1,8 +1,8 @@
 class Student < ApplicationRecord
+  has_secure_password
+
   belongs_to :university, optional: true
   belongs_to :ej, optional: true
-  
-  has_secure_password
 
   validates :name, presence: true, length: { in: 2..30 }
   validates :surname, presence: true, length: {in: 2.. 40 }

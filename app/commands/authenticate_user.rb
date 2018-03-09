@@ -19,7 +19,7 @@ class AuthenticateUser
     user = Student.find_by_email(email)
     return user if user && user.authenticate(password)
 
-    errors.add :user_authentication, 'Credencial inválidas'
+    errors.add :user_authentication, 'Credencial inválida'
     nil
   end
 end

@@ -1,4 +1,5 @@
 class StudentsController < ApplicationController
+  #skip_before_action :authorize_request, only: :create
   before_action :set_student, only: [:show, :update, :destroy]
 
   # GET /students
@@ -14,6 +15,12 @@ class StudentsController < ApplicationController
   end
 
   # POST /students
+  # def create
+  #   student = Student.create!(student_params)
+  #   auth_token = AuthenticateUser.new(student.email, student.password).call
+  #   response = { message: Message.account_created, auth_token: auth_token }
+  #   json_response(response, :created)
+  # end
   def create
     @student = Student.new(student_params)
 

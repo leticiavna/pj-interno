@@ -12,6 +12,6 @@
 /tmp/*
 !/log/.keep
 !/tmp/.keep
-config/database.yml
-config/Gemfile
+/config/database.yml
+/config/Gemfile
 .byebug_history
